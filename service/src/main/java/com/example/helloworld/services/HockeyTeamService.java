@@ -25,16 +25,33 @@ public class HockeyTeamService {
         final String url = "https://records.nhl.com/site/api/trophy";
         return getHttpRestResponse(url);
     }
+    public String getTeamById(Long id) {
+        String teamId = id.toString();
+        final String url = "https://statsapi.web.nhl.com/api/v1/teams/" + teamId;
+        return getHttpRestResponse(url);
+    }
+    
+    public String getTeamRosterById(Long id) {
+        String teamId = id.toString();
+        final String url = "https://statsapi.web.nhl.com/api/v1/teams/" + teamId + "?expand=team.roster";
+        return getHttpRestResponse(url);
+    }
 
+    public String getPlayerById(Long id) {
+        String playerId = id.toString();
+        final String url = "https://statsapi.web.nhl.com/api/v1/people/" + playerId;
+        return getHttpRestResponse(url);
 
-        private String getHttpRestResponse(String url)
-        {
-            RestTemplate restTemplate = new RestTemplate();
-            HttpHeaders httpHeaders = new HttpHeaders();
-            httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-            ResponseEntity<String> response = restTemplate.exchange(url,
-                    HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
+    }
 
-            return response.getBody();
-        }
+    private String getHttpRestResponse(String url)
+    {
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        ResponseEntity<String> response = restTemplate.exchange(url,
+                HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
+
+        return response.getBody();
+    }
 }
