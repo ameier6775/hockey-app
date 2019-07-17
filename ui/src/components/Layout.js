@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default props => (
   <div>
-    <AppBar style={{ marginBottom: '4000px' }}>
+    <AppBar>
       <ul className="nav-bar">
         <li className="nav-item">
           <Link className="nav-item" to="/">
@@ -29,6 +29,16 @@ export default props => (
         </li>
       </ul>
     </AppBar>
-    {props.children}
+    <div
+      style={{
+        height: '85%',
+        width: '100%',
+        overflow: 'auto',
+        position: 'fixed',
+        bottom: 0,
+      }}
+    >
+      {props.children}
+    </div>
   </div>
 )

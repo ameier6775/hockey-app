@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Typography, Card, CardContent } from '@material-ui/core'
+import { Typography, Card, CardContent, Button } from '@material-ui/core'
 import Axios from 'axios'
 import Layout from '../components/Layout'
+import { Link } from 'react-router-dom'
 
 export default class Teams extends Component {
   constructor() {
@@ -12,12 +13,18 @@ export default class Teams extends Component {
   }
   async componentDidMount() {
     const data = await Axios.get('http://localhost:8080/team')
+    // console.log(data)
     this.setState({ data: data.data.teams })
   }
   render() {
     return (
       <Layout>
-        <div style={{ marginTop: '100px', marginBottom: '100px' }} />
+        <div
+          style={{
+            marginTop: '100px',
+            marginBottom: '100px',
+          }}
+        />
         <div
           style={{
             display: 'flex',
@@ -58,6 +65,7 @@ export default class Teams extends Component {
                     >
                       <a href={team.officialSiteUrl}>Website</a>
                     </Typography>
+                    <Link to={`/team/${team.id}`}>View Team</Link>
                   </CardContent>
                 </Card>
               )
