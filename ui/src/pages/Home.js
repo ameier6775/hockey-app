@@ -1,5 +1,6 @@
 import React from 'react'
 import { AppBar } from '@material-ui/core'
+import '../index.css'
 import Layout from '../components/Layout'
 import { Paper, Typography } from '@material-ui/core'
 
@@ -10,7 +11,7 @@ import { Paper, Typography } from '@material-ui/core'
 export default () => {
   return (
     <Layout>
-      <Paper>
+      <Paper className="home-sweet-home">
         <center>
           <Typography variant="h2">HOME PAGE</Typography>
         </center>

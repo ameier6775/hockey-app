@@ -1,4 +1,5 @@
 import React from 'react'
+import '../index.css'
 import Layout from '../components/Layout'
 import axios from 'axios'
 import { Paper, Typography, Card, CardContent } from '@material-ui/core'
@@ -8,8 +9,13 @@ class Player extends React.Component {
     super()
     this.state = {
       name: '',
+      firstName: '',
       playerId: '',
       age: '',
+      number: '',
+      shoots: '',
+      birthDate: '',
+      birthCity: '',
       team: {
         name: '',
         id: '',
@@ -20,7 +26,11 @@ class Player extends React.Component {
         shortName: '',
       },
       link: '',
-      captain: '',
+      captain: false,
+      alternate: false,
+      height: '',
+      weight: '',
+      season: '',
     }
   }
 
@@ -34,8 +44,13 @@ class Player extends React.Component {
 
     this.setState({
       name: player.fullName,
+      firstName: player.firstName,
       playerId: player.id,
       age: player.currentAge,
+      shoots: player.shootsCatches,
+      number: player.primaryNumber,
+      birthDate: player.birthDate,
+      birthCity: player.birthCity,
       team: {
         name: player.currentTeam.name,
         id: player.currentTeam.id,
@@ -47,6 +62,9 @@ class Player extends React.Component {
       },
       link: player.link,
       captain: player.captain,
+      alternate: player.alternateCaptain,
+      height: player.height,
+      weight: player.weight,
     })
   }
 
@@ -60,26 +78,93 @@ class Player extends React.Component {
               position: 'sticky',
               top: 0,
               marginTop: 15,
-              border: '3px solid black',
+              border: '4px solid orange',
+              color: 'orange',
+              backgroundColor: 'black',
             }}
             elevation={10}
           >
             <Typography variant="h3">
-              <center>{this.state.name}'s Stats</center>
+              <center>
+                <b>{this.state.name}'s Stats</b>
+              </center>
             </Typography>
           </Paper>
-          <Card
-            style={{
-              width: '400px',
-              margin: '10px',
-              textAlign: 'left',
-            }}
-            key={this.state.fullName}
-          >
-            <CardContent>
-              <Typography>{this.state.fullName}</Typography>
-            </CardContent>
-          </Card>
+          <center>
+            <Card
+              style={{
+                width: '400px',
+                margin: '10px',
+                backgroundColor: 'black',
+                border: '5px solid orange',
+              }}
+              key={this.state.fullName}
+            >
+              <CardContent
+                style={{
+                  textAlign: 'left',
+                }}
+              >
+                <Typography className="orange" variant="h3">
+                  <center>
+                    <b>#{this.state.number}</b>
+                  </center>
+                </Typography>
+                <Typography className="orange" variant="h6">
+                  <center>
+                    <b>
+                      {this.state.captain ? 'Captain' : ''}
+                      {this.state.alternate ? 'Assistant Captain' : ''}
+                    </b>
+                  </center>
+                </Typography>
+                <Typography className="orange" variant="subtitle1">
+                  <b>Position: </b>{' '}
+                  <div className="player-card-content">
+                    <em>{this.state.position.shortName}</em>
+                  </div>
+                </Typography>
+                <Typography className="orange" variant="subtitle1">
+                  <b>Team:</b>
+                  <div className="player-card-content">
+                    <em>{this.state.team.name}</em>
+                  </div>
+                </Typography>
+                <Typography className="orange" variant="subtitle1">
+                  <b>Age:</b>{' '}
+                  <div className="player-card-content">
+                    <em>{this.state.age}</em>
+                  </div>
+                </Typography>
+                <Typography className="orange" variant="subtitle1">
+                  <b>Physicality: </b>
+                  <div className="player-card-content">
+                    <em>
+                      {this.state.height} {this.state.weight}
+                    </em>
+                  </div>
+                </Typography>
+                <Typography className="orange">
+                  <b>Shoots: </b>
+                  <div className="player-card-content">
+                    <em>{this.state.shoots}</em>
+                  </div>
+                </Typography>
+                <Typography className="orange" variant="subtitle1">
+                  <b>Nationality:</b>{' '}
+                  <div className="player-card-content">
+                    <em>{this.state.nationality}</em>
+                  </div>
+                </Typography>
+                <Typography className="orange" variant="subtitle1">
+                  <b>From: </b>{' '}
+                  <div className="player-card-content">
+                    <em>{this.state.birthCity}</em>
+                  </div>
+                </Typography>
+              </CardContent>
+            </Card>
+          </center>
         </div>
       </Layout>
     )

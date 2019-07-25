@@ -1,7 +1,5 @@
 package com.example.helloworld.dto;
 
-import java.util.HashMap;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,9 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TeamDto {
+public class PlayerDto {
     private long id;
     private String name;
-    private String teamName;
-    // private List<Player> roster;
 }

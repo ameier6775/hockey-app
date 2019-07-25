@@ -1,7 +1,5 @@
 package com.example.helloworld.services;
 
-import com.example.helloworld.dto.TeamDto;
-import org.apache.coyote.Response;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -10,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 @Service
@@ -43,6 +40,12 @@ public class HockeyTeamService {
         return getHttpRestResponse(url);
 
     }
+    // public String getSeasonStatsForPlayer(Long id, Long anotherId) {
+    //     String playerId = id.toString();
+    //     String seasonId = anotherId.toString();
+    //     final String url = "https://statsapi.web.nhl.com/api/v1/people/" + playerId + "/stats?stats=yearByYear";
+    //     return getHttpRestResponse(url);
+    // }
 
     private String getHttpRestResponse(String url)
     {

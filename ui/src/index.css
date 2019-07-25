@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
 
 code {
@@ -21,4 +22,14 @@ code {
 
 .nav-bar {
   display: flex;
+}
+
+.player-card-content {
+  text-align: center;
+  border: 4px solid rgb(244, 151, 13);
+  margin: 5px;
+}
+
+.orange {
+  color: orange;
 }
