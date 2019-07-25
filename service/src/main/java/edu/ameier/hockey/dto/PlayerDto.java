@@ -1,4 +1,4 @@
-package com.example.helloworld.dto;
+package edu.ameier.hockey.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,12 +1,17 @@
-package com.example.helloworld.controller;
+package edu.ameier.hockey.controller;
 
-import com.example.helloworld.services.HockeyTeamService;
+import edu.ameier.hockey.dto.TeamDto;
+import edu.ameier.hockey.models.HockeyTeam;
+import edu.ameier.hockey.services.HockeyTeamService;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
+import java.util.List;
 
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("team")
+@RequestMapping("/team")
 public class TeamController {
 
     private HockeyTeamService hockeyTeamService;
@@ -15,13 +20,13 @@ public class TeamController {
         this.hockeyTeamService = hockeyTeamService;
     }
 
-    @GetMapping("/team")
-    public String getTeams()
+    @GetMapping
+    public String getTeams() throws IOException
     {
         return hockeyTeamService.getTeams();
     }
 
-    @GetMapping("/team/{id}")
+    @GetMapping("/{id}")
     public String getTeamById(@PathVariable("id") Long id) {
         return hockeyTeamService.getTeamById(id);
     }
@@ -30,7 +35,7 @@ public class TeamController {
     @GetMapping("/player/{id}")
     public String getPlayerById(@PathVariable("id") Long id) {return hockeyTeamService.getPlayerById(id); }
 
-    @GetMapping("/team/{id}/roster")
+    @GetMapping("/{id}/roster")
     public String getTeamRosterById(@PathVariable("id") Long id) {
         return hockeyTeamService.getTeamRosterById(id);
     }

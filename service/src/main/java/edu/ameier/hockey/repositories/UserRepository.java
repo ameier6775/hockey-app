@@ -1,4 +1,7 @@
-package com.example.helloworld.Repositories;
+package edu.ameier.hockey.repositories;
 
-public interface UserRepository {
+import edu.ameier.hockey.models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
 }

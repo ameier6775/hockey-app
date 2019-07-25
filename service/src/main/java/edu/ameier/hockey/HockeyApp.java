@@ -1,7 +1,6 @@
-package com.example.helloworld;
+package edu.ameier.hockey;
 
-import com.example.helloworld.Repositories.TeamRepository;
-import com.example.helloworld.models.HockeyTeam;
+import edu.ameier.hockey.models.HockeyTeam;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,12 +13,12 @@ public class HockeyApp {
 		SpringApplication.run(HockeyApp.class, args);
 	}
 
-	@Bean
-	CommandLineRunner initDB(TeamRepository teamRepository) {
-		return (args) -> {
-			HockeyTeam hockeyTeam = new HockeyTeam();
-			teamRepository.save(hockeyTeam);
-		};
-	}
+//	@Bean
+//	CommandLineRunner initDB(TeamRepository teamRepository) {
+//		return (args) -> {
+//			HockeyTeam hockeyTeam = new HockeyTeam();
+//			teamRepository.save(hockeyTeam);
+//		};
+//	}
 
 }
