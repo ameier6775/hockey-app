@@ -27,6 +27,20 @@ export default props => (
             </Typography>
           </Link>
         </li>
+        <li className="nav-item">
+          <Link className="nav-item" to="/login">
+            <Typography gutterBottom variant="body1">
+              Login
+            </Typography>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-item" to="/signup">
+            <Typography gutterBottom variant="body1">
+              Sign Up
+            </Typography>
+          </Link>
+        </li>
       </ul>
     </AppBar>
     <div
