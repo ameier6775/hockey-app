@@ -1,9 +1,7 @@
 package edu.ameier.hockey.services;
 
-import edu.ameier.hockey.models.Player;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class PlayerService {

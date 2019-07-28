@@ -1,23 +1,21 @@
 package edu.ameier.hockey.controller;
 
-import edu.ameier.hockey.dto.TeamDto;
-import edu.ameier.hockey.models.HockeyTeam;
+import edu.ameier.hockey.models.User;
 import edu.ameier.hockey.services.HockeyTeamService;
+import edu.ameier.hockey.services.UserService;
 import org.springframework.web.bind.annotation.*;
-
 import java.io.IOException;
-import java.util.List;
-
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/team")
 public class TeamController {
 
+    private UserService userService;
     private HockeyTeamService hockeyTeamService;
 
-    public TeamController(HockeyTeamService hockeyTeamService) {
+    public TeamController(HockeyTeamService hockeyTeamService, UserService userService) {
         this.hockeyTeamService = hockeyTeamService;
+        this.userService = userService;
     }
 
     @GetMapping
@@ -26,16 +24,20 @@ public class TeamController {
         return hockeyTeamService.getTeams();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/team/{id}")
     public String getTeamById(@PathVariable("id") Long id) {
         return hockeyTeamService.getTeamById(id);
     }
 
-    //TODO: Put thing into Player Controller, if needed.
-    @GetMapping("/player/{id}")
+    @GetMapping("/team/player/{id}")
     public String getPlayerById(@PathVariable("id") Long id) {return hockeyTeamService.getPlayerById(id); }
 
-    @GetMapping("/{id}/roster")
+    @PostMapping("/signup")
+    public User addUser(@RequestBody User user) {
+        return userService.addUser(user);
+    }
+
+    @GetMapping("/team/{id}/roster")
     public String getTeamRosterById(@PathVariable("id") Long id) {
         return hockeyTeamService.getTeamRosterById(id);
     }

@@ -24,12 +24,10 @@ public class User {
     private Long id;
 
     @NotNull
-    @Size(min=3, max=15)
     @Column(name = "user_name")
     private String userName;
 
     @NotNull
-    @Size(min=5)
     @Column(name = "password")
     private String password;
 
@@ -38,4 +36,5 @@ public class User {
 
     @OneToMany
     private List<Player> playerIds;
+
 }
