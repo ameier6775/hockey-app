@@ -1,5 +1,4 @@
 import React from 'react'
-import { yellow } from '@material-ui/core/colors'
 import {
   Typography,
   Card,
@@ -14,55 +13,52 @@ export default () => {
   return (
     <Layout>
       <div>
-        <Card
-          style={{
-            margin: '10px',
-            marginTop: '100px',
-            marginBottom: '100px',
-            marginLeft: '18%',
-            display: 'flex',
-            flexWrap: 'wrap',
-            width: '58%',
-            height: 'auto',
-          }}
-        >
-          <CardContent>
-            <Typography variant="h3">
-              <b>Login</b>
-            </Typography>
-            <Typography>
+        <form>
+          <Card
+            style={{
+              margin: '10px',
+              marginTop: '100px',
+              marginBottom: '100px',
+              marginLeft: '18%',
+              display: 'flex',
+              flexWrap: 'wrap',
+              width: '58%',
+              height: 'auto',
+            }}
+          >
+            <CardContent>
+              <Typography variant="h3">
+                <b>Login</b>
+              </Typography>
               <TextField
+                fullWidth
+                margin="normal"
+                label="Username"
+                name="user"
                 type="text"
                 placeholder="username"
-                style={{
-                  marginTop: '10px',
-                  border: 'solid orange',
-                }}
+                variant="outlined"
               ></TextField>
-            </Typography>
-            <Typography>
               <TextField
+                fullWidth
+                margin="normal"
+                label="Password"
                 type="password"
                 placeholder="password"
-                style={{
-                  marginTop: '10px',
-                  border: 'solid orange',
-                }}
+                variant="outlined"
               ></TextField>
-            </Typography>
-            <Typography>
-              <div>
+              <Typography component="label">
                 <Button color="primary">
                   <em>LOGIN</em>
                 </Button>
-              </div>
-            </Typography>
-            Don't have an account?{' '}
-            <Link color="primary" to={`/signup`}>
-              <em>SIGN UP</em>
-            </Link>
-          </CardContent>
-        </Card>
+              </Typography>
+              Don't have an account?{' '}
+              <Link color="primary" to={`/signup`}>
+                <em>SIGN UP</em>
+              </Link>
+            </CardContent>
+          </Card>
+        </form>
       </div>
     </Layout>
   )

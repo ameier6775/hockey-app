@@ -1,5 +1,4 @@
 import React from 'react'
-import { AppBar } from '@material-ui/core'
 import '../index.css'
 import Layout from '../components/Layout'
 import { Paper, Typography } from '@material-ui/core'
