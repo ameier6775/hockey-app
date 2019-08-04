@@ -36,11 +36,13 @@ class Player extends React.Component {
 
   async componentDidMount() {
     const playersData = await axios.get(
-      `http://localhost:8080/player/${this.props.match.params.id}`
+      `http://localhost:8080/team/player/${this.props.match.params.id}`
     )
+    console.log(playersData)
     const player = playersData.data.people[0]
+    // const player = playersData.data.people[0]
 
-    console.log(playersData.data.people[0].fullName)
+    // console.log(playersData.data.people[0].fullName)
 
     this.setState({
       name: player.fullName,

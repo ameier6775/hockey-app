@@ -31,11 +31,16 @@ class Team extends React.Component {
     const data = await axios.get(
       `http://localhost:8080/team/${this.props.match.params.id}`
     )
+
     const team = data.data.teams[0]
+
+    console.log(data.data.teams[0])
+    // console.log(playerData.data.teams[0].roster.roster)
 
     const playerData = await axios.get(
       `http://localhost:8080/team/${this.props.match.params.id}/roster`
     )
+    console.log(playerData)
 
     const roster = playerData.data.teams[0].roster.roster
 
