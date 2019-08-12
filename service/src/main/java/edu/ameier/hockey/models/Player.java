@@ -17,6 +17,6 @@ public class Player {
 
     @Id
     @Column(name = "player_Id", unique = true)
-    private Long id;
+    protected Long id;
 
 }

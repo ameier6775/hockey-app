@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @Entity
 @Table(name = "user")
-public class User {
+public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", unique = true)
@@ -38,11 +38,11 @@ public class User {
     @OneToMany
     private List<Player> playerIds;
 
-    public User (String userName, String password) {
+    public AppUser(String userName, String password) {
         this.userName = userName;
         this.password = password;
     }
 
-    public <T> User(String userName, String password, List<T> emptyList) {
+    public <T> AppUser(String userName, String password, List<T> emptyList) {
     }
 }

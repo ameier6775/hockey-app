@@ -1,7 +1,6 @@
 package edu.ameier.hockey.services;
 
 import org.springframework.stereotype.Service;
-import java.io.IOException;
 
 @Service
 public class HockeyTeamService {
@@ -10,40 +9,33 @@ public class HockeyTeamService {
     public HockeyTeamService(RestTemplateService restTemplateService) {
         this.restTemplateService = restTemplateService;
     }
-    public String getTeams() throws IOException
-    {
-        final String url = "https://statsapi.web.nhl.com/api/v1/teams";
-        String body = restTemplateService.getHttpRestResponse(url);
 
+    public String getTeams() {
+        final String url = "http://statsapi.web.nhl.com/api/v1/teams";
+        return restTemplateService.getHttpRestResponse(url);
+    }
 //        ObjectMapper mapper = new ObjectMapper();
 //        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 //        TeamDto[] team = mapper.readValue(body, TeamDto[].class);
 
-        return body;
-    }
     public String getCup()
     {
-        final String url = "https://records.nhl.com/site/api/trophy";
+        final String url = "http://records.nhl.com/site/api/trophy";
         return restTemplateService.getHttpRestResponse(url);
     }
+
     public String getTeamById(Long id) {
         String teamId = id.toString();
-        final String url = "https://statsapi.web.nhl.com/api/v1/teams/" + teamId;
+        final String url = "http://statsapi.web.nhl.com/api/v1/teams/" + teamId;
         return restTemplateService.getHttpRestResponse(url);
     }
     
     public String getTeamRosterById(Long id) {
         String teamId = id.toString();
-        final String url = "https://statsapi.web.nhl.com/api/v1/teams/" + teamId + "?expand=team.roster";
+        final String url = "http://statsapi.web.nhl.com/api/v1/teams/" + teamId + "?expand=team.roster";
         return restTemplateService.getHttpRestResponse(url);
     }
 
-    public String getPlayerById(Long id) {
-        String playerId = id.toString();
-        final String url = "https://statsapi.web.nhl.com/api/v1/people/" + playerId;
-        return restTemplateService.getHttpRestResponse(url);
-
-    }
 }
 
 

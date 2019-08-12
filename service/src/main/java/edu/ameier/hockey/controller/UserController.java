@@ -2,17 +2,13 @@ package edu.ameier.hockey.controller;
 
 import edu.ameier.hockey.models.AppUser;
 import edu.ameier.hockey.services.UserService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "https://localhost:3000")
-public class SignUpController {
+public class UserController {
     private UserService userService;
 
-    public SignUpController(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -21,4 +17,15 @@ public class SignUpController {
         return userService.addUser(appUser);
     }
 
+//    @GetMapping
+//    @ResponseBody
+//    public AppUser addUser(@RequestParam)
 }
+    //    @PostMapping("/login")
+//    public AppUser checkUser(String username, String password) {
+//
+//        Boolean loggedIn = userService.checkUser(username, password);
+//        if (loggedIn) {
+//            userRepository.
+//        }
+//    }
