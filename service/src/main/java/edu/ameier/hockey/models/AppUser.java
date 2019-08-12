@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Data
 @AllArgsConstructor
@@ -24,12 +23,14 @@ public class User {
     private Long id;
 
     @NotNull
-    @Column(name = "user_name")
+    @Column(name = "username", unique = true)
     private String userName;
 
     @NotNull
     @Column(name = "password")
     private String password;
+
+    private Boolean signedIn;
 
     @OneToMany
     private List<HockeyTeam> teamIds;
@@ -37,4 +38,11 @@ public class User {
     @OneToMany
     private List<Player> playerIds;
 
+    public User (String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
+    public <T> User(String userName, String password, List<T> emptyList) {
+    }
 }

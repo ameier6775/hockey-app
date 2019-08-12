@@ -13,7 +13,6 @@ export default class Teams extends Component {
   }
   async componentDidMount() {
     const data = await Axios.get('http://localhost:8080/team')
-    // console.log(data)
     this.setState({ data: data.data.teams })
   }
   render() {
@@ -37,12 +36,12 @@ export default class Teams extends Component {
             this.state.data.map(team => {
               return (
                 <Card
+                  key={team.id}
                   style={{
                     width: '400px',
                     margin: '10px',
                     textAlign: 'left',
                   }}
-                  key={team.id}
                 >
                   <CardContent>
                     <Typography variant="h5"> {team.name}</Typography>

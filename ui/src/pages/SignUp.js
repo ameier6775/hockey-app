@@ -37,6 +37,7 @@ class User extends React.Component {
     })
     console.log(response)
     console.log(this.state)
+    // console.log(this.state.user.)
   }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value })

@@ -77,7 +77,6 @@ class Player extends React.Component {
           <Paper
             style={{
               position: '-webkit-sticky',
-              position: 'sticky',
               top: 0,
               marginTop: 15,
               border: '4px solid orange',

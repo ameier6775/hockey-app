@@ -73,7 +73,6 @@ class Team extends React.Component {
           <Paper
             style={{
               position: '-webkit-sticky',
-              position: 'sticky',
               top: 0,
             }}
             elevation={10}
