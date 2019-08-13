@@ -9,24 +9,16 @@ import {
 import Layout from '../components/Layout'
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
+// import { AuthContext } from '../App'
 
 class Login extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { username: '', password: '' }
-    this.handleLogin = this.handleLogin.bind(this)
+    this.state = { userName: '', password: '' }
     this.handleChange = this.handleChange.bind(this)
   }
 
-  async handleLogin(e) {
-    e.preventDefault()
-
-    const response = await Axios.post(`http://localhost:8080/login`, {
-      username: this.state.username,
-      password: this.state.password,
-    })
-  }
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value })
   }
@@ -34,6 +26,8 @@ class Login extends React.Component {
   async componentDidMount() {}
   render() {
     return (
+      // <AuthContext.Consumer>
+      // {auth => (
       <Layout>
         <div>
           <form>
@@ -57,15 +51,16 @@ class Login extends React.Component {
                   fullWidth
                   margin="normal"
                   label="Username"
-                  name="user"
+                  name="userName"
                   type="text"
                   onChange={this.handleChange}
-                  placeholder="username"
+                  placeholder="userName"
                   variant="outlined"
                 ></TextField>
                 <TextField
                   fullWidth
                   margin="normal"
+                  name="password"
                   label="Password"
                   type="password"
                   onChange={this.handleChange}
@@ -73,7 +68,29 @@ class Login extends React.Component {
                   variant="outlined"
                 ></TextField>
                 <Typography component="label">
-                  <Button onSubmit={this.handleLogin} color="primary">
+                  <Button
+                    onClick={async e => {
+                      e.preventDefault()
+                      const response = await Axios.post(
+                        `http://localhost:8080/login`,
+                        {
+                          userName: this.state.userName,
+                          password: this.state.password,
+                        }
+                      )
+                      console.log(response)
+
+                      // auth.setAuth(response.headers.authorization)
+
+                      window.localStorage.setItem(
+                        'auth',
+                        response.headers.authorization
+                      )
+
+                      // console.log(auth.auth)
+                    }}
+                    color="primary"
+                  >
                     <em>LOGIN</em>
                   </Button>
                 </Typography>
@@ -86,6 +103,8 @@ class Login extends React.Component {
           </form>
         </div>
       </Layout>
+      // )}
+      // </AuthContext.Consumer>
     )
   }
 }

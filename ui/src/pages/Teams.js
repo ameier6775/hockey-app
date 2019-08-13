@@ -12,7 +12,9 @@ export default class Teams extends Component {
     }
   }
   async componentDidMount() {
-    const data = await Axios.get('http://localhost:8080/team')
+    const data = await Axios.get('http://localhost:8080/team', {
+      headers: { authorization: window.localStorage.getItem('auth') },
+    })
     this.setState({ data: data.data.teams })
   }
   render() {

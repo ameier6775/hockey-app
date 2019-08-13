@@ -77,7 +77,7 @@ class User extends React.Component {
                   onChange={this.handleChange}
                   name="user"
                   type="text"
-                  placeholder="username"
+                  placeholder="userName"
                   variant="outlined"
                 ></TextField>
                 <TextField
