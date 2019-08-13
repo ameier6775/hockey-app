@@ -13,7 +13,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.lang.reflect.Array;
 
 import static edu.ameier.hockey.security.SecurityConstants.*;
 
@@ -33,6 +32,7 @@ public class WebSecurity  extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
                 .antMatchers(HttpMethod.POST, LOG_IN_URL).permitAll()
+                .antMatchers("**", H2_URL).permitAll()
                 .anyRequest().authenticated()
 
                 .and()
@@ -40,7 +40,9 @@ public class WebSecurity  extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthorizationFilter(authenticationManager()))
                 // this disables session creation on Spring Security
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and().httpBasic().disable();
+                .and()
+                .httpBasic()
+                .disable();
 
     }
 
